@@ -1,0 +1,46 @@
+
+<!-- slider -->
+<!-- <section class="text-center">
+    <h2 class="text-3xl text-main font-bold my-3 ">Pupular Categies</h2>
+  <owl-carousel-o [options]="customOptions">
+
+  
+      @for (category of  categories; track category._id ) {
+        <ng-template carouselSlide [id]="category._id">
+          <img class="h-[300px]" [src]="category.image" [alt]="category.name" [title]="category.name">
+          <h3>{{category.name}}</h3>
+        </ng-template>
+      }
+  
+  
+  </owl-carousel-o>
+</section> -->
+
+
+
+
+<section class="text-center mb-20 mt-5 ">
+    <h2 class="text-3xl font-bold text-main my-3">popular categorys</h2>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10" >
+
+       
+        @for (category of  categories; track category._id ) {
+            
+                <div class="category mb-4  bg-[#F1F3F2]  rounded-lg group">
+                    
+                    <img [src]="category.image" class="w-full object-cover  h-[200px] "[alt]="category.name">
+                    <span class="text-main"> {{category.slug}}</span>
+                    <h2 class="mb-4 text-center" >{{category.name}}</h2>
+                    
+
+                
+            </div>
+                
+        }
+       
+        
+    </div>
+</section>
+
+

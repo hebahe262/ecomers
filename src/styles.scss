@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+@import 'ngx-toastr/toastr';
+
+
+
+.btn-main{
+    @apply disabled:bg-gray-700 bg-main text-white px-12 py-2 border rounded hover:bg-green-800 transition-colors duration-500
+    }
+
+
+   

@@ -1,0 +1,66 @@
+
+<!-- products -->
+<section class="text-center">
+    <h2 class="text-3xl text-main font-bold my-3">popular products</h2>
+<div class="gap-10 text-center p-5 mx-auto w-[50%] ">
+    
+    <input [(ngModel)]="text"  type="search" id="default-search" class="  block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-main focus:border-main dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main dark:focus:border-main" placeholder="Search Mockups, Logos..." required />
+         <!-- <input [(ngModel)]="text" type="search"  placeholder="search ny name...." class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"> -->
+
+</div>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10" >
+
+       
+        @for (product of products | search :text; track product.id) {
+            
+                <div class="product mb-4 p-4 bg-[#F1F3F2]  rounded-lg group">
+                    <div [routerLink]="['/details',product.id]">
+                    <img [src]="product.imageCover"class="w-full"[alt]="product.title">
+                    <span class="text-main"> {{product.category.name}}</span>
+                    <h2 class="mb-4">{{product.title|termext}}</h2>
+                    <div class="flex justify-between mb-3">
+                        <p>EG {{product.price}}</p>
+
+                        <div class="flex">
+                            @for (num of [1,2,3,4,5].slice(0 , product.ratingsAverage); track $index) {
+                            <span><i class="fa fa-star text-[#ffc908]"></i></span>
+                            }
+                            @if(product.ratingsAverage % 1!==0){
+                            <i class="fa-solid fa-star-half-stroke text-[#ffc908]"></i>
+                            }
+                            <span class="text-slate-500">{{product.ratingsAverage}} </span>
+<!--                             
+                            @if ( product.ratingsAverage  % 3!==3 ) {
+                               <span class="text-red-700">on sale</span>
+                            } -->
+                            
+                        </div>
+                        
+                        <!-- <p><i class="fa fa-star text-[#ffc908]"></i> {{product.ratingsAverage}}</p> -->
+                    </div>
+                    @if (product.ratingsAverage > 4) {
+                        <span class="bg-red-500 text-white text-sm font-semibold px-3 py-1 rounded-full shadow-md uppercase">
+                           🔥 On Sale
+                        </span>
+                     }
+
+                    
+
+                </div>
+
+                <!-- <button (click)="addToWishlist(product.id)" > <i class="fa-solid fa-heart  text-black p-2 rounded-md font-bold "></i> </button> -->
+
+                <button (click)="addToCart(product.id)" class="bg-main text-white w-full p-2 rounded-md font-bold opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-full group-hover:translate-y-0 "> Add to cart</button>
+                
+               
+                
+            </div>
+                <!-- <button class="bg-main group-hover:opacity-100 transition-all duration-500 translate-y-[100%] group-hover:translate-y-[0%] text-white p-2 rounded-md w-[90%] mx-auto block opacity-0"> Add To Cart</button> -->
+            
+            
+            
+        }
+       
+        
+    </div>
+</section>

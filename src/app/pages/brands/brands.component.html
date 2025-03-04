@@ -1,0 +1,45 @@
+<div class="text-center mt-3">
+  <h1 class="text-main text-4xl mb-8 text-center">All Brands</h1>
+</div>
+<div class="container">
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 text-center   ">
+    @for (Brands of Brands; track Brands._id) {
+
+
+        <div class="product mb-2 p-4 bg-[#F1F3F2]  rounded-lg group">
+            
+            <img [src]="Brands.image"class="w-full"[alt]="Brands.name">
+            
+            <h2 class="  text-3xl text-center text-main">{{Brands.name}}</h2>
+
+            
+            
+    </div>
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+        
+          
+
+    }
+
+
+</div>
+</div>
+
+
+
+
+
+
+<!-- Modal toggle -->

@@ -1,0 +1,102 @@
+ @if (wishlistDetails.count) {
+    <h2 class="text-2xl font-bold mb-6 text-center text-main"> Fav List 🛍</h2>
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-16 py-3">
+                    <span class="sr-only">Image</span>
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Product
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Price
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    
+                    Add TO Cart
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @for (prod of wishlistDetails.data; track prod._id) {
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <td class="p-4">
+                    <img [src]="prod.imageCover" class="w-16 md:w-32 max-w-full max-h-full" alt="Apple Watch">
+                </td>
+                <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    {{prod.title}}
+                </td>
+                
+                <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                   <span class="text-main">Egp</span> {{prod.price}}
+                </td>
+                
+                <td class="px-6 py-4">
+
+            <!-- From Uiverse.io by Creatlydev --> 
+<button (click)="addToCart(prod.id)" href="#" class="cart" style="--clr: #7808d0">
+    <span class="cart__icon-wrapper">
+      <svg
+        viewBox="0 0 14 15"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="cart__icon-svg"
+        width="10"
+      >
+        <path
+          d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+          fill="currentColor"
+        ></path>
+      </svg>
+  
+      <svg
+        viewBox="0 0 14 15"
+        fill="none"
+        width="10"
+        xmlns="http://www.w3.org/2000/svg"
+        class="cart__icon-svg cart__icon-svg--copy"
+      >
+        <path
+          d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+          fill="currentColor"
+        ></path>
+      </svg>
+    </span>
+    Add To Cart
+</button>
+  
+
+
+
+
+
+                <!-- <a (click)="addToCart(prod.id)" class="bg-main cursor-pointer text-white w-full p-2 rounded-md font-bold  "> Add to cart</a> -->
+                </td>
+
+                <td class="px-6 py-4">
+                    <a (click)="removeItem(prod.id)" class=" font-medium cursor-pointer  text-red-600 dark:text-red-500 hover:underline"> Remove <i class="fa-solid fa-trash text-red-600"></i></a>
+                </td>
+
+
+            </tr>
+          
+        }
+        </tbody>
+    </table>
+</div> 
+ }
+ 
+ 
+@else {
+    <div class="p-6 flex justify-center">
+        <!-- <h1 class="text-5xl text-red-600 text-center">No Data Found</h1> -->
+        <img src="images/no-wish-list.png" alt="">
+       </div>
+}

@@ -1,0 +1,61 @@
+/* From Uiverse.io by css.delets-io */ 
+.delet {
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    // background: ;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+    background: #0AAD0A;
+   }
+   
+   .delet, .delet span {
+    transition: 200ms;
+   }
+   
+   .delet .text {
+    transform: translateX(35px);
+    color: white;
+    font-weight: bold;
+   }
+   
+   .delet .icon {
+    position: absolute;
+    border-left: 1px solid white;
+    transform: translateX(110px);
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
+   
+   .delet svg {
+    width: 15px;
+    fill: #eee;
+   }
+   
+   .delet:hover {
+    background: #ff3636;
+   }
+   
+   .delet:hover .text {
+    color: transparent;
+   }
+   
+   .delet:hover .icon {
+    width: 150px;
+    border-left: none;
+    transform: translateX(0);
+   }
+   
+   .delet:focus {
+    outline: none;
+   }
+   
+   .delet:active .icon svg {
+    transform: scale(0.8);
+   }
