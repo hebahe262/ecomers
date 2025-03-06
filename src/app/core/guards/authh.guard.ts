@@ -9,9 +9,9 @@ export const authhGuard: CanActivateFn = (route, state) => {
   const _pLATFORM_ID=inject(PLATFORM_ID)
  
   if(isPlatformBrowser(_pLATFORM_ID)){
-    const token =localStorage.getItem('userToken')!;
-     console.log( (jwtDecode(localStorage.getItem('userToken')!)as {id:string}).id)
-    localStorage.setItem('userId',(jwtDecode(token)as {id:string}).id)
+    // const token =localStorage.getItem('userToken')!;
+    //  console.log( (jwtDecode(localStorage.getItem('userToken')!)as {id:string}).id)
+    // localStorage.setItem('userId',(jwtDecode(token)as {id:string}).id)
     if(localStorage.getItem('userToken') !== null){
       return true;
      }
