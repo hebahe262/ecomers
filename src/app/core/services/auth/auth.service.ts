@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environments';
 import { jwtDecode } from "jwt-decode";
 import { Router } from '@angular/router';
+import { UserData } from '../../../shared/interfaces/userdata';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
  private readonly _router =inject(Router);
 
-  userData:any =null;
+  userData:UserData = {} as UserData;
 
 
   constructor( private _httpClient:HttpClient) { }
@@ -26,15 +27,16 @@ export class AuthService {
   };
   
 saveUserData():void{
-  if(localStorage.getItem('userToken')!==null){
+  if(localStorage.getItem('userToken')!=null){
     this.userData= jwtDecode(localStorage.getItem('userToken') ! )
     console.log('userToken',this.userData)
+    localStorage.setItem('userId' , this.userData.id)
   }
 }
 
 logOut():void{
   localStorage.removeItem('userToken');
-  this.userData=null;
+  this.userData = {} as UserData;
   this._router.navigate(['/login']);
 
 }

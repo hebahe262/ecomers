@@ -2,15 +2,22 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { finalize } from 'rxjs';
+import { Router } from '@angular/router';
 
 export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
 
   const  _ngxSpinnerService=inject(NgxSpinnerService);
- 
-  _ngxSpinnerService.show();
+  const router = inject(Router);
+  
+  if(router.url.includes('login') ||  router.url.includes('register')){
+    return next(req)
+  }else{
 
-  return next(req).pipe( finalize( ()=>{
-     _ngxSpinnerService.hide(); 
+    _ngxSpinnerService.show();
+    return next(req).pipe( finalize( ()=>{
+       _ngxSpinnerService.hide(); 
+  
+    } ))
+  }
 
-  } ))
 };

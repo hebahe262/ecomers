@@ -10,7 +10,6 @@ import { FormsModule } from '@angular/forms';
 import { SearchPipe } from '../../core/pipes/search.pipe';
 import { CartService } from '../../core/services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { WishlistService } from '../../core/services/wishlist.service';
 import { AuthService } from '../../core/services/auth/auth.service';
 @Component({
@@ -39,11 +38,12 @@ export class HomeComponent implements OnInit {
   // wishlist: Set<string> = new Set(); 
   wishlist: any[]=[]; 
 
-  userId = localStorage.getItem("userId")!;
+  userId:string = localStorage.getItem('userId')!;
 
   ngOnInit(): void {
     this.getProductsData();
     this.getCategoryData();
+    this._authService.saveUserData();
     this.getAllUserWishlist(this.userId);
    }
 
