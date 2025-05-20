@@ -8,13 +8,12 @@ export const hedarsInterceptor: HttpInterceptorFn = (req, next) => {
 const  _pLATFORM_ID=inject( PLATFORM_ID)
 if(isPlatformBrowser(_pLATFORM_ID)){
   if(localStorage.getItem('userToken')){
-    if(req.url.includes('cart')|| req.url.includes('orders')||req.url.includes('wishlist')){
       req = req.clone({
         setHeaders:{
           token:localStorage.getItem('userToken')!
         }
       })
-    }
+    
   }
 }
 
